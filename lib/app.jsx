@@ -391,7 +391,9 @@ export const App = connect(mapStateToProps, mapDispatchToProps)(
           {isDevConfig && <DevBadge />}
           {isAuthorized ? (
             <div className={mainClasses}>
-              {state.showNavigation && <NavigationBar />}
+              {state.showNavigation && (
+                <NavigationBar isElectron={isElectron()} />
+              )}
               <AppLayout
                 isFocusMode={settings.focusModeEnabled}
                 isNavigationOpen={state.showNavigation}
