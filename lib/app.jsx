@@ -68,6 +68,7 @@ function mapDispatchToProps(dispatch, { noteBucket }) {
         'setNoteDisplay',
         'setMarkdown',
         'setAccountName',
+        'toggleAutoHideMenuBar',
         'toggleFocusMode',
         'toggleSpellCheck',
       ]),
@@ -138,6 +139,7 @@ export const App = connect(mapStateToProps, mapDispatchToProps)(
 
     componentDidMount() {
       ipc.on('appCommand', this.onAppCommand);
+      ipc.send('setAutoHideMenuBar', this.props.settings.autoHideMenuBar);
       ipc.send('settingsUpdate', this.props.settings);
 
       this.props.noteBucket
